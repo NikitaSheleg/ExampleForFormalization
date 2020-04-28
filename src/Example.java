@@ -1,5 +1,9 @@
 
 import java.io.Serializable;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -17,7 +21,7 @@ public class Example extends TestClass<String> implements TestInterface {
 
         new Thread(() -> {
             try {
-                JustClass justClass = new JustClass(c,1);
+                JustClass justClass = new JustClass(c, 1);
                 List<String> strings = new ArrayList<>();
                 Example example = new Example("first", strings);
                 int k = 4;
@@ -108,3 +112,7 @@ interface TestInterface {
     String iMethod(String string);
 }
 
+@Target(value = ElementType.METHOD)
+@Retention(value = RetentionPolicy.RUNTIME)
+@interface TestAnnotation {
+}
